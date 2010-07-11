@@ -47,8 +47,8 @@ Description: development libraries and header files for FreeSWITCH
  gateway or a media server to host IVR applications using simple scripts or XML
  to control the callflow.
  .
- This package contains the include files used if you wish to compile a package which requires FreeSWITCH's
- source file headers. 
+ This package contains the include files used if you wish to compile a package
+ which requires FreeSWITCH's source file headers. 
 
 Package: freeswitch-spidermonkey
 Architecture: any

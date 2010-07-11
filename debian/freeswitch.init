@@ -15,14 +15,14 @@
 # Do NOT "set -e"
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
-PATH=/sbin:/usr/sbin:/bin:/usr/bin:/opt/freeswitch/bin
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/bin
 DESC="FreeSwitch Voice Switching System"
 NAME=freeswitch
-DAEMON=/opt/freeswitch/bin/$NAME
+DAEMON=/usr/bin/$NAME
 USER=freeswitch
-PIDFILE=/opt/freeswitch/run/$NAME.pid
+PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
-WORKDIR=/opt/$NAME
+WORKDIR=/var/lib/$NAME
 
 # Check if we are being executed by init
 

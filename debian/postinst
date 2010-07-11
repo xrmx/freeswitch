@@ -23,15 +23,17 @@ case "$1" in
 	configure)
 		if ! getent passwd freeswitch >/dev/null; then
 			adduser --disabled-password  --quiet --system \
-			--home /opt/freeswitch \
+			--home /var/lib/freeswitch \
 			--gecos "FreeSwitch Voice Platform" --ingroup daemon \
 			freeswitch
 			adduser freeswitch audio
 		fi
  
-		mkdir -p /opt/freeswitch
-		chown -R freeswitch:daemon /opt/freeswitch/
-		chmod -R o-rwx /opt/freeswitch/
+        # FIXME -- do we need this? and shouldn't FS be in group FS?
+		chown -R freeswitch:daemon /var/lib/freeswitch/
+		chmod -R o-rwx /var/lib/freeswitch/db/
+		chown -R freeswitch:daemon /var/run/freeswitch/
+		chown -R freeswitch:daemon /var/log/freeswitch/
 
     ;;
 

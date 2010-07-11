@@ -57,82 +57,26 @@ ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 	FEATURES += --disable-optimization
 endif
 
-config.status: configure
-	dh_testdir
-	rm -f modules.conf
-	touch modules.conf
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	if test ! -f Makefile.in ;  then \
+		if test -f ./bootstrap.sh ; then \
+			AUTOCONF=${AUTOCONF} ./bootstrap.sh ; \
+		else \
+			echo "No Makefile.in and no known way to bootstrap." ; \
+			exit 1; \
+		fi; \
+	fi;
+	: > modules.conf
 	echo $(MODULES)
 	for i in $(MODULES); do echo $$i >> modules.conf; done
-	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) ${FEATURES} --prefix=/usr --sysconfdir=/etc/freeswitch --with-modinstdir=/usr/lib/freeswitch/mod --includedir=/usr/include/freeswitch --with-rundir=/var/run/freeswitch
-	# --htdocsdir=/usr/share/doc/freeswitch/html
+	dh_auto_configure -- ${FEATURES}
 
-configure:
-	if test ! -f Makefile.in ;  then \
-	    if test -f ./bootstrap.sh ; then \
-		AUTOCONF=${AUTOCONF} ./bootstrap.sh ; \
-	    else \
-		echo "No Makefile.in and no known way to bootstrap." ; \
-		exit 1; \
-	    fi; \
-	fi;
+#	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) ${FEATURES} --prefix=/usr --sysconfdir=/etc/freeswitch --with-modinstdir=/usr/lib/freeswitch/mod --includedir=/usr/include/freeswitch --with-rundir=/var/run/freeswitch
 
-build: build-stamp
-build-stamp:  config.status
-	dh_testdir
+#	./configure --build=x86_64-linux-gnu --prefix=/usr --includedir=\${prefix}/include --mandir=\${prefix}/share/man --infodir=\${prefix}/share/info
+# --sysconfdir=/etc --localstatedir=/var --libexecdir=\${prefix}/lib/freeswitch --disable-maintainer-mode --disable-dependency-tracking
 
-	$(MAKE)
-
-	touch $@
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp 
-
-	-$(MAKE) update-clean
-ifneq "$(wildcard /usr/share/misc/config.sub)" ""
-	cp -f /usr/share/misc/config.sub build/config/config.sub
-endif
-ifneq "$(wildcard /usr/share/misc/config.guess)" ""
-	cp -f /usr/share/misc/config.guess build/config/config.guess
-endif
-	rm -f config.status
-	rm -f */*/config.status
-	rm -f */*/*/config.status
-	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k 
-	dh_installdirs -A --sourcedir=debian/tmp
-
-	VERBOSE=1 $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
-
-
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installdocs
-	dh_installchangelogs
-	dh_installinit
-	cp debian/monit/freeswitch.monitrc debian/freeswitch/etc/monit/freeswitch.monitrc
-	dh_install --sourcedir=debian/tmp
-	ln -s /var/lib/freeswitch/freeswitch.serial debian/freeswitch/etc/freeswitch
-	dh_link
-	dh_strip --dbg-package=freeswitch
-	dh_compress
-	dh_fixperms --exclude /etc/freeswitch
-	dh_installdeb
-	dh_shlibdeps --exclude=/opt/freeswitch
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 

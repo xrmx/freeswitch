@@ -1,8 +1,8 @@
-opt/freeswitch/conf/lang/en/demo/demo-ivr.xml
-opt/freeswitch/conf/lang/en/demo/demo.xml
-opt/freeswitch/conf/lang/en/dir/sounds.xml
-opt/freeswitch/conf/lang/en/dir/tts.xml
-opt/freeswitch/conf/lang/en/en.xml
-opt/freeswitch/conf/lang/en/vm/sounds.xml
-opt/freeswitch/conf/lang/en/vm/tts.xml
-opt/freeswitch/mod/mod_say_en.so*
+etc/freeswitch/lang/en/demo/demo-ivr.xml
+etc/freeswitch/lang/en/demo/demo.xml
+etc/freeswitch/lang/en/dir/sounds.xml
+etc/freeswitch/lang/en/dir/tts.xml
+etc/freeswitch/lang/en/en.xml
+etc/freeswitch/lang/en/vm/sounds.xml
+etc/freeswitch/lang/en/vm/tts.xml
+usr/lib/freeswitch/mod/mod_say_en.so*

@@ -1,3 +1,9 @@
+freeswitch (1.0.4+hands.1) UNRELEASED; urgency=low
+
+  * Initial Debianisation attempt
+
+ -- Philip Hands <phil@hands.com>  Thu, 08 Jul 2010 21:54:14 +0100
+
 freeswitch (1.0.4-1ubuntu2) karmic; urgency=low
 
     * upgrade: Add more verbosity when building to make it easier to find build

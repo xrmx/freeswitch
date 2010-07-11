@@ -1,2 +1,2 @@
-opt/freeswitch/conf/autoload_configs/lua.conf.xml
-opt/freeswitch/mod/mod_lua.so*
+etc/freeswitch/autoload_configs/lua.conf.xml
+usr/lib/freeswitch/mod/mod_lua.so*

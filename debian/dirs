@@ -1,5 +1,4 @@
-opt/freeswitch/log
-opt/freeswitch/db
-opt/freeswitch/bin/scripts
 etc/monit
-
+var/lib/freeswitch/db
+var/run/freeswitch
+var/log/freeswitch

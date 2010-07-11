@@ -44,11 +44,11 @@ AC_ARG_WITH([rundir],
 AC_SUBST(runtimedir)
 AC_DEFINE_UNQUOTED([SWITCH_RUN_DIR],"${runtimedir}",[where to put pidfile to])
 
-logfiledir="${prefix}/log"
+logfiledir="/var/log/freeswitch"
 AC_SUBST(logfiledir)
 AC_DEFINE_UNQUOTED([SWITCH_LOG_DIR],"${logfiledir}",[where to put log files])
 
-dbdir="${prefix}/db"
+dbdir="/var/lib/freeswitch/db"
 AC_SUBST(dbdir)
 AC_DEFINE_UNQUOTED([SWITCH_DB_DIR],"${dbdir}",[where to put db files])
 
