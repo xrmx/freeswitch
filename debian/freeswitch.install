@@ -3,7 +3,6 @@ usr/bin/fs_cli
 usr/bin/fs_ivrd
 usr/bin/fsxs
 usr/bin/gentls_cert
-usr/bin/scripts/*
 etc/freeswitch/autoload_configs/acl.conf.xml
 etc/freeswitch/autoload_configs/alsa.conf.xml
 etc/freeswitch/autoload_configs/cdr_csv.conf.xml
@@ -149,6 +148,4 @@ usr/lib/freeswitch/mod/ozmod_analog_em.so*
 usr/lib/freeswitch/mod/ozmod_analog.so*
 usr/lib/freeswitch/mod/ozmod_isdn.so*
 usr/lib/freeswitch/mod/ozmod_skel.so*
-usr/lib/freeswitch/mod/ozmod_ss7_boost.so*
-usr/lib/freeswitch/mod/ozmod_wanpipe.so*
 usr/lib/freeswitch/mod/ozmod_zt.so*
