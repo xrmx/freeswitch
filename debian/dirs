@@ -1,4 +1,5 @@
-etc/monit
+etc/freeswitch
 var/lib/freeswitch/db
 var/run/freeswitch
 var/log/freeswitch
+etc/monit
