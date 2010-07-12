@@ -71,7 +71,7 @@ endif
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k 
+	dh_prep
 	dh_installdirs -A --sourcedir=debian/tmp
 
 	VERBOSE=1 $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
@@ -85,21 +85,22 @@ binary-indep: build install
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installdocs
 	dh_installchangelogs
+	dh_installdocs
 	dh_installinit
 	cp debian/monit/freeswitch.monitrc debian/freeswitch/etc/monit/freeswitch.monitrc
 	dh_install --sourcedir=debian/tmp
 	ln -s /var/lib/freeswitch/freeswitch.serial debian/freeswitch/etc/freeswitch
 	dh_link
-	dh_strip --dbg-package=freeswitch
+	dh_strip --dbg-package=freeswitch-dbg
 	dh_compress
 	dh_fixperms --exclude /etc/freeswitch
+	dh_makeshlibs
 	dh_installdeb
-	dh_shlibdeps --exclude=/opt/freeswitch
+	dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
+.PHONY: build clean binary-indep binary-arch binary install
