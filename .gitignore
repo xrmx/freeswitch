@@ -70,3 +70,14 @@ configure.lineno
 /scripts/gentls_cert
 /a.out.dSYM
 /freeswitch-sounds-*
+/src/mod/applications/mod_easyroute/Makefile
+/src/mod/applications/mod_lcr/Makefile
+/src/mod/applications/mod_nibblebill/Makefile
+/src/mod/applications/mod_rss/Makefile
+/src/mod/dialplans/mod_dialplan_directory/Makefile
+/src/mod/say/mod_say_de/Makefile
+/src/mod/say/mod_say_es/Makefile
+/src/mod/say/mod_say_fr/Makefile
+/src/mod/say/mod_say_it/Makefile
+/src/mod/say/mod_say_nl/Makefile
+
