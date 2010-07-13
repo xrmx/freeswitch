@@ -30,7 +30,7 @@ endif
 config.status: configure
 	dh_testdir
 	cp debian/modules.conf modules.conf
-	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) ${FEATURES} --prefix=/usr --sysconfdir=/etc/freeswitch --with-modinstdir=/usr/lib/freeswitch/mod --includedir=/usr/include/freeswitch --with-rundir=/var/run/freeswitch
+	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) ${FEATURES} --prefix=/usr --sysconfdir=/etc/freeswitch --with-modinstdir=/usr/lib/freeswitch/mod --includedir=/usr/include/freeswitch --with-rundir=/var/run/freeswitch --with-soundsdir=/etc/freeswitch/sounds
 	# --htdocsdir=/usr/share/doc/freeswitch/html
 
 configure:
@@ -91,6 +91,7 @@ binary-arch: build install
 	cp debian/monit/freeswitch.monitrc debian/freeswitch/etc/monit/freeswitch.monitrc
 	dh_install --sourcedir=debian/tmp
 	ln -s /var/lib/freeswitch/freeswitch.serial debian/freeswitch/etc/freeswitch
+	ln -s /usr/share/freeswitch/sounds debian/freeswitch/etc/freeswitch/sounds
 	dh_link
 	dh_strip --dbg-package=freeswitch-dbg
 	dh_compress
