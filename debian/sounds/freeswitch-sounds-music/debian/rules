@@ -11,9 +11,9 @@ export DEB_DH_INSTALL_SOURCEDIR=debian/tmp
 
 build:
 	dh_testdir
-	mkdir -p debian/tmp/opt/freeswitch/sounds
-	cp -a music debian/tmp/opt/freeswitch/sounds/
-	./debian/buildsounds.sh debian/tmp/opt/freeswitch/sounds/music	
+	mkdir -p debian/tmp/usr/share/freeswitch/sounds
+	cp -a music debian/tmp/usr/share/freeswitch/sounds/
+	./debian/buildsounds.sh debian/tmp/usr/share/freeswitch/sounds/music	
 clean:
 	dh_testdir
 	dh_testroot

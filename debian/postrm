@@ -20,8 +20,7 @@
 
 case "$1" in
      purge)
-	rm -Rf /etc/opt/freeswitch
-	rm -Rf /opt/freeswitch
+	#rm -Rf /etc/freeswitch
 	userdel freeswitch
         ;; 
  
