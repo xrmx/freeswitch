@@ -1,6 +1,7 @@
 freeswitch (1.0.6-1+hands.1) UNRELEASED; urgency=low
 
   * Initial Debianisation attempt
+  * Switch to dpkg-source 3.0 (quilt) format
 
  -- Philip Hands <phil@hands.com>  Thu, 08 Jul 2010 21:54:14 +0100
 
