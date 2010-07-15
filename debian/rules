@@ -30,7 +30,7 @@ endif
 config.status: configure
 	dh_testdir
 	cp debian/modules.conf modules.conf
-	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) ${FEATURES} --prefix=/usr --sysconfdir=/etc/freeswitch --with-modinstdir=/usr/lib/freeswitch/mod --includedir=/usr/include/freeswitch --with-rundir=/var/run/freeswitch --with-soundsdir=/etc/freeswitch/sounds
+	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) ${FEATURES} --prefix=/usr --sysconfdir=/etc/freeswitch --with-modinstdir=/usr/lib/freeswitch/mod --includedir=/usr/include/freeswitch --with-rundir=/var/run/freeswitch
 	# --htdocsdir=/usr/share/doc/freeswitch/html
 
 configure:
