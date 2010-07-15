@@ -34,7 +34,7 @@ config.status: configure
 	# --htdocsdir=/usr/share/doc/freeswitch/html
 
 configure:
-	if test ! -f Makefile.in ;  then \
+	if test ! -f Makefile.in || test ! -x configure ;  then \
 	    if test -f ./bootstrap.sh ; then \
 		AUTOCONF=${AUTOCONF} ./bootstrap.sh ; \
 	    else \
