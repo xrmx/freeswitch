@@ -1,0 +1,43 @@
+Description: patch paths for FHS -- this is a dodgy hack
+ This is a cheap and nasty hack -- it should be done by making configure
+ accept more path options, and then specifying them in the debian/rules
+Author: Philip Hands <phil@hands.com>
+
+--- freeswitch-1.0.6.orig/configure.in
++++ freeswitch-1.0.6/configure.in
+@@ -44,19 +44,19 @@ AC_ARG_WITH([rundir],
+ AC_SUBST(runtimedir)
+ AC_DEFINE_UNQUOTED([SWITCH_RUN_DIR],"${runtimedir}",[where to put pidfile to])
+ 
+-logfiledir="${prefix}/log"
++logfiledir="/var/log/freeswitch"
+ AC_SUBST(logfiledir)
+ AC_DEFINE_UNQUOTED([SWITCH_LOG_DIR],"${logfiledir}",[where to put log files])
+ 
+-dbdir="${prefix}/db"
++dbdir="/var/lib/freeswitch/db"
+ AC_SUBST(dbdir)
+ AC_DEFINE_UNQUOTED([SWITCH_DB_DIR],"${dbdir}",[where to put db files])
+ 
+-htdocsdir="${prefix}/htdocs"
++htdocsdir="${prefix}/share/doc/freeswitch/html"
+ AC_SUBST(htdocsdir)
+ AC_DEFINE_UNQUOTED([SWITCH_HTDOCS_DIR],"${htdocsdir}",[where to put htdocs files])
+ 
+-soundsdir="${prefix}/sounds"
++soundsdir="/etc/freeswitch/sounds"
+ AC_SUBST(soundsdir)
+ AC_DEFINE_UNQUOTED([SWITCH_SOUNDS_DIR],"${soundsdir}",[where to put sounds files])
+ 
+--- freeswitch-1.0.6.orig/src/mod/languages/mod_perl/Makefile
++++ freeswitch-1.0.6/src/mod/languages/mod_perl/Makefile
+@@ -37,6 +37,6 @@ local_clean:
+ 	rm -fr *~ .perlok .libs freeswitch.$(LIBTOOL_LIB_EXTEN) 2>/dev/null
+ 
+ depend_install:
+-	mkdir -p $(DESTDIR)$(prefix)/perl
+-	$(LTINSTALL) freeswitch.$(LIBTOOL_LIB_EXTEN) freeswitch.pm $(DESTDIR)$(prefix)/perl
+-	if [ ! -f $(DESTDIR)$(prefix)/perl/freeswitch.pm ] ; then $(LTINSTALL) freeswitch.pm $(DESTDIR)$(prefix)/perl ; fi
++	mkdir -p $(DESTDIR)$(prefix)/share/freeswitch
++	$(LTINSTALL) freeswitch.$(LIBTOOL_LIB_EXTEN) freeswitch.pm $(DESTDIR)$(prefix)/share/freeswitch
++	if [ ! -f $(DESTDIR)$(prefix)/share/freeswitch/freeswitch.pm ] ; then $(LTINSTALL) freeswitch.pm $(DESTDIR)$(prefix)/share/freeswitch ; fi
