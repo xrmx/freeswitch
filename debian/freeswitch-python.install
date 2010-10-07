@@ -1,0 +1,3 @@
+etc/freeswitch/autoload_configs/python.conf.xml
+usr/lib/freeswitch/mod/mod_python.so*
+usr/lib/python*/*/freeswitch.py
