@@ -76,6 +76,18 @@ install: build
 
 	VERBOSE=1 $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
 
+	# compile and copy by hand perl and python esl bindings
+	cd $(CURDIR)/libs/esl/ && make perlmod pymod && cd -
+
+	mkdir -p $(CURDIR)/debian/tmp/usr/lib/python2.6/dist-packages
+	cp $(CURDIR)/libs/esl/python/ESL.py $(CURDIR)/debian/tmp/usr/lib/python2.6/dist-packages
+	cp $(CURDIR)/libs/esl/python/_ESL.so $(CURDIR)/debian/tmp/usr/lib/python2.6/dist-packages
+
+	mkdir -p $(CURDIR)/debian/tmp/usr/share/perl5/ESL
+	cp $(CURDIR)/libs/esl/perl/ESL.so $(CURDIR)/debian/tmp/usr/share/perl5
+	cp $(CURDIR)/libs/esl/perl/ESL.pm $(CURDIR)/debian/tmp/usr/share/perl5
+	cp $(CURDIR)/libs/esl/perl/ESL/* $(CURDIR)/debian/tmp/usr/share/perl5/ESL/
+
 
 # Build architecture-independent files here.
 binary-indep: build install

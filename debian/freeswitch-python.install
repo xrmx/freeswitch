@@ -1,3 +1,5 @@
 etc/freeswitch/autoload_configs/python.conf.xml
 usr/lib/freeswitch/mod/mod_python.so*
 usr/lib/python*/*/freeswitch.py
+usr/lib/python*/dist-packages/_ESL.so
+usr/lib/python*/dist-packages/ESL.py

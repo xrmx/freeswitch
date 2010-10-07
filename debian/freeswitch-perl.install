@@ -1,3 +1,6 @@
 etc/freeswitch/autoload_configs/perl.conf.xml
 usr/lib/freeswitch/mod/mod_perl.so*
 usr/share/freeswitch/*
+usr/share/perl5/ESL/*
+usr/share/perl5/ESL.pm
+usr/share/perl5/ESL.so
